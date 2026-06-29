@@ -1,13 +1,18 @@
 package com;
 
 import java.util.ArrayList;
+import java.util.InvalidPropertiesFormatException;
 import java.util.List;
 
 public class Calculator {
     /* 연산 결과를 저장하는 컬렉션 타입 필드 선언 및 생성 */
-    private List<Integer> resultList = new ArrayList<>();
-    /* Getter 메서드 구현 */
+    private List<Integer> resultList;
 
+
+    public Calculator() {
+        this.resultList = new ArrayList<>() ;
+    }
+    /* Getter 메서드 구현 */
     public List<Integer> getResultList() {
         return resultList;
     }
@@ -34,7 +39,11 @@ public class Calculator {
                 }
             }
             default:
-                System.out.println("올바른 연산자를 입력하세요.");
+                try {
+                    throw new InvalidPropertiesFormatException("연산기호가 잘못 되었습니다.");
+                } catch (InvalidPropertiesFormatException e) {
+                    throw new RuntimeException(e);
+                }
 
         }
         /* return 연산 결과 */
