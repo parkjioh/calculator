@@ -1,0 +1,55 @@
+package com;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Calculator {
+    /* 연산 결과를 저장하는 컬렉션 타입 필드 선언 및 생성 */
+    private List<Integer> resultList = new ArrayList<>();
+    /* Getter 메서드 구현 */
+
+    public List<Integer> getResultList() {
+        return resultList;
+    }
+    /* Setter 메서드 구현 */
+    public void setResultList() {
+        this.resultList = resultList;
+    }
+
+    public int calculate(int number1, int number2, char symbol) {
+        /* 위 요구사항에 맞게 구현 */
+        int result = 0;
+        // 제어문을 활용하여 위 요구사항을 만족할 수 있게 구현합니다.
+        switch (symbol) {
+            case '+': result = number1 + number2; break;
+            case '-': result = number1 - number2; break;
+            case '*': result = number1 * number2; break;
+            case '/': {
+                if (number2 == 0 ) {
+                    System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
+                    throw new ArithmeticException();
+                } else {
+                    result = number1 / number2 ;
+                    break;
+                }
+            }
+            default:
+                System.out.println("올바른 연산자를 입력하세요.");
+
+        }
+        /* return 연산 결과 */
+
+        resultList.add(result);
+
+        return result;
+    }
+
+    public void removeResult() {
+        resultList.remove(0);
+    }
+
+
+}
+
+// 연산자 잘못 들어왔을 때 연산자만 다시 받는 걸로 돌리고 싶은데 흠
+// 가장 간단한 방법 -> while & if문해서 연산자 받을 때 검사 안 맞느면 다시하기
