@@ -48,6 +48,12 @@ public class Calculator {
         resultList.remove(0);
     }
 
+    public void inquiryResult() {
+        for (Integer i : resultList) {
+            System.out.print(i + " ");
+        }
+    }
+
 
 }
 
