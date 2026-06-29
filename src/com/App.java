@@ -18,7 +18,24 @@ public class App {
         sc.nextLine();
         String symbols = sc.nextLine();
 
+        int result = 0;
+        switch (symbols.trim()) {
+            case "+": result = number1 + number2; break;
+            case "-": result = number1 + number2; break;
+            case "*": result = number1 + number2; break;
+            case "/": {
+                if (number2 == 0 ) {
+                    System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
+                    return;
+                } else {
+                    result = number1 / number2 ;
+                    break;
+                }
+            }
 
+        }
+
+        System.out.println("결과 :" + result);
 
     }
 }
