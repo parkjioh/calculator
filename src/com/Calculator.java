@@ -7,10 +7,12 @@ import java.util.List;
 public class Calculator {
     /* 연산 결과를 저장하는 컬렉션 타입 필드 선언 및 생성 */
     private List<Integer> resultList;
+    private List<Double> circleAreas;
+    private final double pi = 3.14;
 
-
-    public Calculator() {
+    public Calculator(List<Integer> resultList, List<Double> circleAreas) {
         this.resultList = new ArrayList<>() ;
+        this.circleAreas = new ArrayList<>();
     }
     /* Getter 메서드 구현 */
     public List<Integer> getResultList() {
@@ -22,9 +24,7 @@ public class Calculator {
     }
 
     public int calculate(int number1, int number2, char symbol) {
-        /* 위 요구사항에 맞게 구현 */
         int result = 0;
-        // 제어문을 활용하여 위 요구사항을 만족할 수 있게 구현합니다.
         switch (symbol) {
             case '+': result = number1 + number2; break;
             case '-': result = number1 - number2; break;
@@ -64,6 +64,24 @@ public class Calculator {
     }
 
 
+    public double calculateCirecleArea(int radious) {
+        double result=  0;
+
+        result = 2 * radious * pi;
+        return result;
+    }
+
+    public List<Double> getCircleAreas() {
+        return circleAreas;
+    }
+
+    public void setCircleAreas(List<Double> circleAreas) {
+        this.circleAreas = circleAreas;
+    }
+
+    public void setResultList(List<Integer> resultList) {
+        this.resultList = resultList;
+    }
 }
 
 // 연산자 잘못 들어왔을 때 연산자만 다시 받는 걸로 돌리고 싶은데 흠
