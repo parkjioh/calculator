@@ -1,13 +1,19 @@
 package com;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
     static void main() {
+        /*
         // 연산의 결과를 저장할 수 있도록 적합한 타입의 배열을 생성합니다.
         int[] resultArr = new int[10];
         // 연산의 결과를 비어있는 곳에 저장하기 위해 저장할 때마다 count 합니다.
         int count = 0;
+         */
+
+        List<Integer> resultList = new ArrayList<>();
 
         Scanner sc = new Scanner(System.in);
         while(true) {
@@ -44,7 +50,19 @@ public class App {
 
             System.out.println("결과 : " + result);
 
-            //현재 저장된 index가 마지막(9)라면 가장 먼저 저장된 결과 값이 삭제 되고 새로운 결과 값이 마지막 index에 저장될 수 있도록 구현합니다.
+            resultList.add(result);
+
+            System.out.print("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제) : ");
+            String remove = sc.nextLine();
+            if (remove.equals("remove")) {
+                resultList.remove(0);
+            }
+
+            for (Integer i : resultList) {
+                System.out.print(i+  " ");
+            }
+
+          /*  //현재 저장된 index가 마지막(9)라면 가장 먼저 저장된 결과 값이 삭제 되고 새로운 결과 값이 마지막 index에 저장될 수 있도록 구현합니다.
             if (count == 9) {
                 for (int i = 0; i < 10; i ++){
                     if (i == 9) {
@@ -60,14 +78,11 @@ public class App {
                 count++;
             }
 
-            for (int i : resultArr) {
-                System.out.print(i);
-            }
-            System.out.println();
+           */
 
-//            System.out.print("더 계산하시겠습니까? (exit 입력 시 종료) : ");
-//            String exit = sc.nextLine();
-//            if (exit.equals("exit")) break;
+            System.out.print("더 계산하시겠습니까? (exit 입력 시 종료) : ");
+            String exit = sc.nextLine();
+            if (exit.equals("exit")) break;
         }
 
     }
