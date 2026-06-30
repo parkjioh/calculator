@@ -5,15 +5,25 @@ import java.util.List;
 
 public abstract class Calculator {
     /* 연산 결과를 저장하는 컬렉션 타입 필드 선언 및 생성 */
-    private List<Double> resultList ;
+    private final List<Double> resultList = new ArrayList<>();
 
+    public void addResultList(double result ) {
+        resultList.add(result);
+    }
 
-    abstract List<Double> getResultList();
+    List<Double> getResultList() {
+        return resultList;
+    }
 
-    abstract void removeResult();
+    public void removeResult() {
+        resultList.remove(0);
+    }
 
-    abstract void inquiryResult();
-
+    public void inquiryResult() {
+        for (Double v : resultList) {
+            System.out.print(v + " ");
+        }
+    }
 }
 
 // 연산자 잘못 들어왔을 때 연산자만 다시 받는 걸로 돌리고 싶은데 흠

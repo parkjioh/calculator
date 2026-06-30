@@ -13,23 +13,21 @@ public class App {
     static void main() {
 
         Scanner sc = new Scanner(System.in);
-        List<Double> arithmeticList = new ArrayList<>();
-        List<Double> circleList = new ArrayList<>();
+        ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator();
+        CircleCalculator circleCalculator = new CircleCalculator();
 
         while(true) {
             System.out.print("사칙 연산을 할 경우 1, 원의 넓이를 구할 경우 2 : ");
             int choice = sc.nextInt();
             App app = new App();
             if(choice == 1) {
-                app.calculateArithmetic(sc, new ArithmeticCalculator(arithmeticList));
+                app.calculateArithmetic(sc, arithmeticCalculator);
             } else if (choice == 2 ) {
-                app.calculateCircle(sc, new CircleCalculator(circleList));
+                app.calculateCircle(sc, circleCalculator);
             } else {
                 System.out.println("사칙 연산의 경우 1, 원의 넓이를 구할 경우 2입니다. 다시 입력하세요.");
                 continue;
             }
-
-
 
             System.out.print("더 계산하시겠습니까? (exit 입력 시 종료) : ");
             String exit = sc.nextLine();
@@ -53,7 +51,7 @@ public class App {
         double result = calc.calculate(number1, number2, symbols);
 
         System.out.println("결과 : " + result);
-
+        calc.addResultList(result);
         sc.nextLine();
         System.out.print("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제) : ");
         String remove = sc.nextLine();
@@ -71,10 +69,10 @@ public class App {
 
     private void calculateCircle(Scanner sc, CircleCalculator calc) {
         System.out.print("원의 반지름을 입력하세요. : ");
-        int radious = sc.nextInt();
-        double result = calc.calculateCirecleArea(radious);
+        int radius = sc.nextInt();
+        double result = calc.calculateCirecleArea(radius);
         System.out.println("결과 : " + result);
-
+        calc.addResultList(result);
         sc.nextLine();
         System.out.print("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제) : ");
         String remove = sc.nextLine();
