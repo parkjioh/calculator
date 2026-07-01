@@ -3,15 +3,15 @@ package com.calc;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Calculator {
+public abstract class Calculator<T> {
     /* 연산 결과를 저장하는 컬렉션 타입 필드 선언 및 생성 */
-    private final List<Double> resultList = new ArrayList<>();
+    private final List<T> resultList = new ArrayList<>();
 
-    public void addResultList(double result ) {
+    public void addResultList(T result ) {
         resultList.add(result);
     }
 
-    List<Double> getResultList() {
+    List<T> getResultList() {
         return resultList;
     }
 
@@ -20,7 +20,7 @@ public abstract class Calculator {
     }
 
     public void inquiryResult() {
-        for (Double v : resultList) {
+        for (T v : resultList) {
             System.out.print(v + " ");
         }
     }

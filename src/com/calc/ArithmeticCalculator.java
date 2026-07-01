@@ -1,36 +1,36 @@
 package com.calc;
 
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.InvalidPropertiesFormatException;
-import java.util.List;
+import com.operator.*;
 
-public class ArithmeticCalculator extends Calculator{
+public class ArithmeticCalculator<T> extends Calculator{
 
     private final AddOperator addOperator;
     private final SubtractOperator subtractOperator;
     private final MultiplyOperator multiplyOperator;
     private final DivideOperator divideOperator;
+    private final ModOperator modOperator;
 
     public ArithmeticCalculator() {
         addOperator = new AddOperator();
         subtractOperator = new SubtractOperator();
         multiplyOperator = new MultiplyOperator();
         divideOperator = new DivideOperator();
+        modOperator = new ModOperator();
     }
 
-    public double calculate(int number1, int number2, char symbol) {
-        double result = 0;
+    public double calculate(double number1, double number2, char symbol) {
+        Operator operator;
         switch (symbol) {
-            case '+': result = addOperator.operate(number1, number2); break;
-            case '-': result = subtractOperator.operate(number1,number2); break;
-            case '*': result = multiplyOperator.opretate(number1,number2); break;
-            case '/': result = divideOperator.operate(number1,number2); break;
+            case '+': operator = addOperator; break;
+            case '-': operator = subtractOperator; break;
+            case '*': operator = multiplyOperator; break;
+            case '/': operator = divideOperator; break;
+            case '%': operator = modOperator; break;
             default: throw new IllegalArgumentException("잘못된 입력입니다.");
 
         }
         /* return 연산 결과 */
 
-        return result;
+        return operator.operate(number1,number2);
     }
 }
